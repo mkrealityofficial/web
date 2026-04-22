@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Admin panel must NOT be indexed by search engines -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#d4af37">
+    <title>Admin Login | MK Real Estate</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        /* ── Animated Login Background ── */
+        #auth-veil {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #auth-veil section {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+        #auth-veil section::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(#000, #d4af37, #000);
+            animation: animateBg 5s linear infinite;
+            z-index: 1;
+        }
+        @keyframes animateBg {
+            0%   { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        #auth-veil section span {
+            position: relative;
+            display: block;
+            width: calc(6.25vw - 2px);
+            height: calc(6.25vw - 2px);
+            background: #0a0f1d;
+            z-index: 2;
+            transition: 1.5s;
+        }
+        #auth-veil section span:hover {
+            background: #d4af37;
+            transition: 0s;
+        }
+        @media (max-width: 900px) {
+            #auth-veil section span {
+                width: calc(10vw - 2px);
+                height: calc(10vw - 2px);
+            }
+        }
+        @media (max-width: 600px) {
+            #auth-veil section span {
+                width: calc(20vw - 2px);
+                height: calc(20vw - 2px);
+            }
+        }
+
+        /* ── Login Card ── */
+        .signin {
+            position: absolute;
+            width: 400px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.2);
+            background: rgba(10, 15, 29, 0.85);
+            backdrop-filter: blur(16px);
+        }
+        .signin .content {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .signin-logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #d4af37, #f5d76e, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        .signin-logo small {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            margin-top: 4px;
+            -webkit-text-fill-color: rgba(212,175,55,0.6);
+        }
+        .signin .content h2 {
+            font-size: 1.6em;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: -8px;
+        }
+        .signin .content .form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .signin .content .form .inputBox {
+            position: relative;
+            width: 100%;
+        }
+        .signin .content .form .inputBox input {
+            position: relative;
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,175,55,0.2);
+            outline: none;
+            padding: 22px 14px 8px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1em;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+        .signin .content .form .inputBox input:focus {
+            border-color: #d4af37;
+            background: rgba(212,175,55,0.06);
+        }
+        .signin .content .form .inputBox i {
+            position: absolute;
+            left: 14px;
+            top: 15px;
+            font-style: normal;
+            color: rgba(255,255,255,0.4);
+            transition: 0.4s;
+            pointer-events: none;
+            font-size: 14px;
+        }
+        .signin .content .form .inputBox input:focus ~ i,
+        .signin .content .form .inputBox input:valid ~ i {
+            transform: translateY(-8px);
+            font-size: 11px;
+            color: #d4af37;
+        }
+        .signin .content .form .inputBox input[type="submit"] {
+            padding: 14px;
+            background: linear-gradient(135deg, #d4af37, #c8a227);
+            cursor: pointer;
+            color: #000;
+            font-weight: 700;
+            font-size: 1em;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 8px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .signin .content .form .inputBox input[type="submit"]:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        .signin .content .form .inputBox input[type="submit"]:active {
+            transform: translateY(0);
+            opacity: 0.7;
+        }
+        #login-error {
+            color: #ef4444;
+            font-size: 13px;
+            text-align: center;
+            display: none;
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.2);
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+
+        /* ── Animated Logout Button ── */
+        .logoutButton {
+            --figure-duration: 100ms;
+            --transform-figure: none;
+            --walking-duration: 100ms;
+            --transform-arm1: none;
+            --transform-wrist1: none;
+            --transform-arm2: none;
+            --transform-wrist2: none;
+            --transform-leg1: none;
+            --transform-calf1: none;
+            --transform-leg2: none;
+            --transform-calf2: none;
+
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.25);
+            color: #d4af37;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            height: 40px;
+            outline: none;
+            padding: 0 12px 0 14px;
+            perspective: 100px;
+            position: relative;
+            text-align: left;
+            width: 130px;
+            -webkit-tap-highlight-color: transparent;
+            border-radius: 8px;
+            transition: background 0.2s, border-color 0.2s;
+            margin-top: auto;
+        }
+        .logoutButton:hover {
+            background: rgba(212,175,55,0.15);
+            border-color: rgba(212,175,55,0.5);
+        }
+        .logoutButton::before {
+            background-color: rgba(212,175,55,0.06);
+            border-radius: 8px;
+            content: '';
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            transform: none;
+            transition: transform 50ms ease;
+            width: 100%;
+            z-index: 2;
+        }
+        .logoutButton:hover .lb-door { transform: rotateY(20deg); }
+        .logoutButton:active::before { transform: scale(.96); }
+        .logoutButton:active .lb-door { transform: rotateY(28deg); }
+        .logoutButton.clicked::before { transform: none; }
+        .logoutButton.clicked .lb-door { transform: rotateY(35deg); }
+        .logoutButton.door-slammed .lb-door { transform: none; transition: transform 100ms ease-in 250ms; }
+        .logoutButton.falling { animation: lbShake 200ms linear; }
+        .logoutButton.falling .lb-bang { animation: lbFlash 300ms linear; }
+        .logoutButton.falling .lb-figure {
+            animation: lbSpin 1000ms infinite linear;
+            bottom: -1080px; opacity: 0; right: 1px;
+            transition: transform calc(var(--figure-duration) * 1ms) linear,
+                bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms,
+                opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms);
+            z-index: 1;
+        }
+        .lb-button-text {
+            color: #d4af37;
+            font-weight: 600;
+            position: relative;
+            z-index: 10;
+        }
+        .lb-svg { display: block; position: absolute; }
+        .lb-figure {
+            bottom: 5px; fill: #d4af37; right: 18px;
+            transform: var(--transform-figure);
+            transition: transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.80, 0.9);
+            width: 30px; z-index: 4;
+        }
+        .lb-door, .lb-doorway { bottom: 4px; fill: rgba(212,175,55,0.8); right: 12px; width: 32px; }
+        .lb-door {
+            transform: rotateY(20deg); transform-origin: 100% 50%;
+            transform-style: preserve-3d; transition: transform 200ms ease; z-index: 5;
+        }
+        .lb-door path { fill: #d4af37; stroke: #d4af37; stroke-width: 4; }
+        .lb-doorway { z-index: 3; }
+        .lb-bang { opacity: 0; }
+        .lb-arm1, .lb-wrist1, .lb-arm2, .lb-wrist2, .lb-leg1, .lb-calf1, .lb-leg2, .lb-calf2 {
+            transition: transform calc(var(--walking-duration) * 1ms) ease-in-out;
+        }
+        .lb-arm1   { transform: var(--transform-arm1);   transform-origin: 52% 45%; }
+        .lb-wrist1 { transform: var(--transform-wrist1); transform-origin: 59% 55%; }
+        .lb-arm2   { transform: var(--transform-arm2);   transform-origin: 47% 43%; }
+        .lb-wrist2 { transform: var(--transform-wrist2); transform-origin: 35% 47%; }
+        .lb-leg1   { transform: var(--transform-leg1);   transform-origin: 47% 64.5%; }
+        .lb-calf1  { transform: var(--transform-calf1);  transform-origin: 55.5% 71.5%; }
+        .lb-leg2   { transform: var(--transform-leg2);   transform-origin: 43% 63%; }
+        .lb-calf2  { transform: var(--transform-calf2);  transform-origin: 41.5% 73%; }
+
+        @keyframes lbSpin  { from { transform: rotate(0deg) scale(0.94); } to { transform: rotate(359deg) scale(0.94); } }
+        @keyframes lbShake { 0% { transform: rotate(-1deg); } 50% { transform: rotate(2deg); } 100% { transform: rotate(-1deg); } }
+        @keyframes lbFlash { 0% { opacity: 0.4; } 100% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <!-- Auth Veil with Animated Login -->
+    <div id="auth-veil">
+        <section id="login-bg-section">
+            <!-- 256 spans generated by JS below -->
+        </section>
+
+        <div class="signin">
+            <div class="content">
+                <div class="signin-logo">
+                    MK REAL ESTATE
+                    <small>ADMIN PANEL</small>
+                </div>
+                <h2>Sign In</h2>
+                <div class="form">
+                    <div class="inputBox">
+                        <input type="email" id="login-email" required />
+                        <i>Email Address</i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" id="login-password" required />
+                        <i>Password</i>
+                    </div>
+                    <div id="login-error"></div>
+                    <div class="inputBox">
+                        <input type="submit" id="login-btn" value="Login" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <aside class="sidebar">
+            <a href="index.html" style="text-decoration:none;">
+                <h2 style="display:flex; align-items:center; gap:8px;">
+                    <img src="logo.png" style="width: 32px; object-fit: contain;">
+                    MK REALTY<br>
+                    <span style="font-size: 12px; color: var(--admin-muted); font-weight: normal;">Admin Panel</span>
+                </h2>
+            </a>
+            <nav>
+                <a href="#" class="active" id="nav-manage">Manage Properties</a>
+                <a href="#" id="nav-add">Add New Property</a>
+
+                <!-- Animated Logout Button -->
+                <button class="logoutButton" id="nav-logout" title="Logout">
+                    <svg class="lb-svg lb-doorway" viewBox="0 0 100 100">
+                        <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z"/>
+                    </svg>
+                    <svg class="lb-svg lb-figure" viewBox="0 0 100 100">
+                        <circle cx="52.1" cy="32.4" r="6.4"/>
+                        <path d="M50.7 62.8c-1.2 2.5-3.6 5-7.2 4-3.2-.9-4.9-3.5-4-7.8.7-3.4 3.1-13.8 4.1-15.8 1.7-3.4 1.6-4.6 7-3.7 4.3.7 4.6 2.5 4.3 5.4-.4 3.7-2.8 15.1-4.2 17.9z"/>
+                        <g class="lb-arm1">
+                            <path d="M55.5 56.5l-6-9.5c-1-1.5-.6-3.5.9-4.4 1.5-1 3.7-1.1 4.6.4l6.1 10c1 1.5.3 3.5-1.1 4.4-1.5.9-3.5.5-4.5-.9z"/>
+                            <path class="lb-wrist1" d="M69.4 59.9L58.1 58c-1.7-.3-2.9-1.9-2.6-3.7.3-1.7 1.9-2.9 3.7-2.6l11.4 1.9c1.7.3 2.9 1.9 2.6 3.7-.4 1.7-2 2.9-3.8 2.6z"/>
+                        </g>
+                        <g class="lb-arm2">
+                            <path d="M34.2 43.6L45 40.3c1.7-.6 3.5.3 4 2 .6 1.7-.3 4-2 4.5l-10.8 2.8c-1.7.6-3.5-.3-4-2-.6-1.6.3-3.4 2-4z"/>
+                            <path class="lb-wrist2" d="M27.1 56.2L32 45.7c.7-1.6 2.6-2.3 4.2-1.6 1.6.7 2.3 2.6 1.6 4.2L33 58.8c-.7 1.6-2.6 2.3-4.2 1.6-1.7-.7-2.4-2.6-1.7-4.2z"/>
+                        </g>
+                        <g class="lb-leg1">
+                            <path d="M52.1 73.2s-7-5.7-7.9-6.5c-.9-.9-1.2-3.5-.1-4.9 1.1-1.4 3.8-1.9 5.2-.9l7.9 7c1.4 1.1 1.7 3.5.7 4.9-1.1 1.4-4.4 1.5-5.8.4z"/>
+                            <path class="lb-calf1" d="M52.6 84.4l-1-12.8c-.1-1.9 1.5-3.6 3.5-3.7 2-.1 3.7 1.4 3.8 3.4l1 12.8c.1 1.9-1.5 3.6-3.5 3.7-2 0-3.7-1.5-3.8-3.4z"/>
+                        </g>
+                        <g class="lb-leg2">
+                            <path d="M37.8 72.7s1.3-10.2 1.6-11.4 2.4-2.8 4.1-2.6c1.7.2 3.6 2.3 3.4 4l-1.8 11.1c-.2 1.7-1.7 3.3-3.4 3.1-1.8-.2-4.1-2.4-3.9-4.2z"/>
+                            <path class="lb-calf2" d="M29.5 82.3l9.6-10.9c1.3-1.4 3.6-1.5 5.1-.1 1.5 1.4.4 4.9-.9 6.3l-8.5 9.6c-1.3 1.4-3.6 1.5-5.1.1-1.4-1.3-1.5-3.5-.2-5z"/>
+                        </g>
+                        <g class="lb-bang">
+                            <path d="M40.5 43.7L26.6 31.4l-2.5 6.7zM41.9 50.4l-19.5-4-1.4 6.3zM40 57.4l-17.7 3.9 3.9 5.7z"/>
+                        </g>
+                    </svg>
+                    <svg class="lb-svg lb-door" viewBox="0 0 100 100">
+                        <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z"/>
+                        <circle cx="66" cy="50" r="3.7"/>
+                    </svg>
+                    <span class="lb-button-text">Log Out</span>
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <!-- View: Manage Properties -->
+            <div id="view-manage">
+                <div class="flex-space">
+                    <h1>Properties List</h1>
+                    <button id="btn-goto-add">+ Add Property</button>
+                </div>
+
+                <div class="card">
+                    <table id="properties-table">
+                        <thead>
+                            <tr>
+                                <th>IMG</th>
+                                <th>Title</th>
+                                <th>Area</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6" style="text-align:center;">Loading properties...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- View: Add Property -->
+            <div id="view-add" style="display: none;">
+                <div class="flex-space">
+                    <h1 id="form-mode-title">Add New Property</h1>
+                    <button type="button" class="btn-outline" id="btn-cancel-edit" style="display: none; padding: 6px 12px; font-size: 14px; min-height: 0;">Cancel Edit</button>
+                </div>
+
+                <div class="card" style="max-width: 800px;">
+                    <form id="add-property-form">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label>Title</label>
+                                <input type="text" id="p-title" required placeholder="e.g. Luxury 4BHK Villa">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Area</label>
+                                <select id="p-area" required>
+                                    <option value="Harni">Harni</option>
+                                    <option value="Alkapuri">Alkapuri</option>
+                                    <option value="Akota">Akota</option>
+                                    <option value="Fatehgunj">Fatehgunj</option>
+                                    <option value="Karelibaug">Karelibaug</option>
+                                    <option value="Waghodia">Waghodia</option>
+                                    <option value="Vasna">Vasna</option>
+                                    <option value="Sama">Sama</option>
+                                    <option value="Mandvi">Mandvi</option>
+                                    <option value="Manjalpur">Manjalpur</option>
+                                    <option value="Tandalja">Tandalja</option>
+                                    <option value="Soma Talav">Soma Talav</option>
+                                    <option value="Ajwa Road">Ajwa Road</option>
+                                    <option value="Tarsali">Tarsali</option>
+                                    <option value="Warasiya">Warasiya</option>
+                                    <option value="Khodiyar nagar">Khodiyar nagar</option>
+                                    <option value="Kalali">Kalali</option>
+                                    <option value="Gotri">Gotri</option>
+                                    <option value="Makarpura">Makarpura</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Type</label>
+                                <select id="p-type" required>
+                                    <option value="Sale: Houses &amp; Apartments">For Sale: Houses &amp; Apartments</option>
+                                    <option value="Rent: Houses &amp; Apartments">For Rent: Houses &amp; Apartments</option>
+                                    <option value="New Projects">New Projects &amp; Properties</option>
+                                    <option value="Lands &amp; Plots">Lands &amp; Plots</option>
+                                    <option value="Rent: Shops &amp; Offices">For Rent: Shops &amp; Offices</option>
+                                    <option value="Sale: Shops &amp; Offices">For Sale: Shops &amp; Offices</option>
+                                    <option value="PG &amp; Guest Houses">PG &amp; Guest Houses</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Price (₹)</label>
+                                <input type="text" id="p-price" required placeholder="e.g. 25000 / month">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select id="p-category" required>
+                                    <option value="Standard">Standard</option>
+                                    <option value="Featured">Featured</option>
+                                    <option value="Pre-Leased">Pre-Leased</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label>Image Uploads (Unlimited)</label>
+                                <input type="file" id="p-image-file" multiple accept="image/*" style="padding: 12px; background: transparent; border: 1px dashed var(--admin-border); cursor: pointer;">
+                                <small style="color: var(--admin-muted); display: block; margin-top: 4px;">You can select multiple photos. Upload maps automatically to Supabase storage. If editing, uploading new photos replaces the old ones.</small>
+                            </div>
+
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label>Description</label>
+                                <textarea id="p-description" rows="5" required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="btn-submit-prop" style="margin-top: 16px;">Save Property</button>
+                        <div id="add-status" style="margin-top: 16px; font-weight: 500;"></div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script>
+        // ── Generate animated background spans ──
+        const section = document.getElementById('login-bg-section');
+        const spanCount = window.innerWidth <= 600 ? 25 : window.innerWidth <= 900 ? 100 : 256;
+        for (let i = 0; i < spanCount; i++) {
+            section.insertBefore(document.createElement('span'), section.querySelector('.signin') || null);
+        }
+
+        // ── Login form handler ──
+        document.getElementById('login-btn').addEventListener('click', async () => {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errEl = document.getElementById('login-error');
+            errEl.style.display = 'none';
+
+            if (!email || !password) {
+                errEl.textContent = 'Please enter email and password.';
+                errEl.style.display = 'block';
+                return;
+            }
+
+            // Try Supabase auth
+            if (window.supabaseClient) {
+                try {
+                    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                    if (error) throw error;
+                    document.getElementById('auth-veil').style.display = 'none';
+                    document.getElementById('dashboard').style.display = 'grid';
+                } catch (e) {
+                    errEl.textContent = e.message || 'Login failed. Check credentials.';
+                    errEl.style.display = 'block';
+                }
+            } else {
+                errEl.textContent = 'Auth service unavailable. Try again.';
+                errEl.style.display = 'block';
+            }
+        });
+
+        // Allow Enter key on inputs
+        ['login-email','login-password'].forEach(id => {
+            document.getElementById(id).addEventListener('keydown', e => {
+                if (e.key === 'Enter') document.getElementById('login-btn').click();
+            });
+        });
+
+        // ── Animated Logout Button Logic ──
+        const logoutButtonStates = {
+            'default':  { '--figure-duration': '100', '--transform-figure': 'none', '--walking-duration': '100', '--transform-arm1': 'none', '--transform-wrist1': 'none', '--transform-arm2': 'none', '--transform-wrist2': 'none', '--transform-leg1': 'none', '--transform-calf1': 'none', '--transform-leg2': 'none', '--transform-calf2': 'none' },
+            'hover':    { '--figure-duration': '100', '--transform-figure': 'translateX(1.5px)', '--walking-duration': '100', '--transform-arm1': 'rotate(-5deg)', '--transform-wrist1': 'rotate(-15deg)', '--transform-arm2': 'rotate(5deg)', '--transform-wrist2': 'rotate(6deg)', '--transform-leg1': 'rotate(-10deg)', '--transform-calf1': 'rotate(5deg)', '--transform-leg2': 'rotate(20deg)', '--transform-calf2': 'rotate(-20deg)' },
+            'walking1': { '--figure-duration': '300', '--transform-figure': 'translateX(11px)', '--walking-duration': '300', '--transform-arm1': 'translateX(-4px) translateY(-2px) rotate(120deg)', '--transform-wrist1': 'rotate(-5deg)', '--transform-arm2': 'translateX(4px) rotate(-110deg)', '--transform-wrist2': 'rotate(-5deg)', '--transform-leg1': 'translateX(-3px) rotate(80deg)', '--transform-calf1': 'rotate(-30deg)', '--transform-leg2': 'translateX(4px) rotate(-60deg)', '--transform-calf2': 'rotate(20deg)' },
+            'walking2': { '--figure-duration': '400', '--transform-figure': 'translateX(17px)', '--walking-duration': '300', '--transform-arm1': 'rotate(60deg)', '--transform-wrist1': 'rotate(-15deg)', '--transform-arm2': 'rotate(-45deg)', '--transform-wrist2': 'rotate(6deg)', '--transform-leg1': 'rotate(-5deg)', '--transform-calf1': 'rotate(10deg)', '--transform-leg2': 'rotate(10deg)', '--transform-calf2': 'rotate(-20deg)' },
+            'falling1': { '--figure-duration': '1600', '--walking-duration': '400', '--transform-arm1': 'rotate(-60deg)', '--transform-wrist1': 'none', '--transform-arm2': 'rotate(30deg)', '--transform-wrist2': 'rotate(120deg)', '--transform-leg1': 'rotate(-30deg)', '--transform-calf1': 'rotate(-20deg)', '--transform-leg2': 'rotate(20deg)' },
+            'falling2': { '--walking-duration': '300', '--transform-arm1': 'rotate(-100deg)', '--transform-arm2': 'rotate(-60deg)', '--transform-wrist2': 'rotate(60deg)', '--transform-leg1': 'rotate(80deg)', '--transform-calf1': 'rotate(20deg)', '--transform-leg2': 'rotate(-60deg)' },
+            'falling3': { '--walking-duration': '500', '--transform-arm1': 'rotate(-30deg)', '--transform-wrist1': 'rotate(40deg)', '--transform-arm2': 'rotate(50deg)', '--transform-wrist2': 'none', '--transform-leg1': 'rotate(-30deg)', '--transform-leg2': 'rotate(20deg)', '--transform-calf2': 'none' }
+        };
+
+        function updateBtnState(btn, state) {
+            if (logoutButtonStates[state]) {
+                btn.state = state;
+                for (let key in logoutButtonStates[state]) {
+                    btn.style.setProperty(key, logoutButtonStates[state][key]);
+                }
+            }
+        }
+
+        document.querySelectorAll('.logoutButton').forEach(btn => {
+            btn.state = 'default';
+            btn.addEventListener('mouseenter', () => { if (btn.state === 'default') updateBtnState(btn, 'hover'); });
+            btn.addEventListener('mouseleave', () => { if (btn.state === 'hover') updateBtnState(btn, 'default'); });
+            btn.addEventListener('click', () => {
+                if (btn.state === 'default' || btn.state === 'hover') {
+                    // Step 1 — start animation
+                    btn.classList.add('clicked');
+                    updateBtnState(btn, 'walking1');
+
+                    // Step 2 — door slams (~300ms)
+                    setTimeout(() => {
+                        btn.classList.add('door-slammed');
+                        updateBtnState(btn, 'walking2');
+
+                        // Step 3 — figure falls (~400ms after step 2)
+                        setTimeout(() => {
+                            btn.classList.add('falling');
+                            updateBtnState(btn, 'falling1');
+
+                            // Update button label while falling
+                            const labelEl = btn.querySelector('.lb-button-text');
+                            if (labelEl) labelEl.textContent = 'Signing out...';
+
+                            setTimeout(() => {
+                                updateBtnState(btn, 'falling2');
+                                setTimeout(() => {
+                                    updateBtnState(btn, 'falling3');
+
+                                    // Step 4 — Wait a full second after final fall pose, THEN logout
+                                    // Total delay ≈ 300 + 400 + 1600 + 300 + 500 + 1000 ≈ ~3.6 seconds
+                                    setTimeout(() => {
+                                        btn.classList.remove('clicked','door-slammed','falling');
+                                        updateBtnState(btn, 'default');
+                                        if (labelEl) labelEl.textContent = 'Log Out';
+
+                                        // ── Actual signout here ──
+                                        if (window.supabaseClient) {
+                                            supabaseClient.auth.signOut().then(() => {
+                                                document.getElementById('dashboard').style.display = 'none';
+                                                document.getElementById('auth-veil').style.display = 'flex';
+                                            });
+                                        } else {
+                                            // fallback if no supabase
+                                            document.getElementById('dashboard').style.display = 'none';
+                                            document.getElementById('auth-veil').style.display = 'flex';
+                                        }
+                                    }, 1000);
+
+                                }, +logoutButtonStates['falling3']['--walking-duration'] || 500);
+                            }, +logoutButtonStates['falling2']['--walking-duration'] || 300);
+                        }, +logoutButtonStates['falling1']['--walking-duration'] || 1600);
+                    }, +logoutButtonStates['walking2']['--figure-duration'] || 400);
+                }
+            });
+        });
+    </script>
+    <script src="admin.js"></script>
+</body>
+</html>

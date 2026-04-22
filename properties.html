@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ═══ Primary SEO ═══ -->
+    <title>Properties for Sale & Rent in Vadodara | MK Real Estate Listings</title>
+    <meta name="description" content="Browse 100+ premium properties for sale & rent in Vadodara. Houses, apartments, offices, shops, plots & PG. Filter by area — Alkapuri, Akota, Fatehgunj, Karelibaug, Waghodia & more. MK Real Estate.">
+    <meta name="keywords" content="properties for sale vadodara, properties for rent vadodara, apartments vadodara, houses vadodara, plots for sale baroda, commercial property vadodara, office space rent vadodara, shop for rent baroda, PG in vadodara, land for sale vadodara, alkapuri flat, akota property, new projects vadodara">
+    <meta name="author" content="MK Real Estate, Vadodara">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="theme-color" content="#d4af37">
+    <link rel="canonical" href="https://www.mkrealty.in/properties.html">
+
+    <!-- ═══ Open Graph ═══ -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MK Real Estate Vadodara">
+    <meta property="og:title" content="Properties for Sale & Rent in Vadodara | MK Real Estate">
+    <meta property="og:description" content="Explore premium houses, flats, offices & plots across all areas of Vadodara. Find your perfect property with MK Real Estate.">
+    <meta property="og:image" content="https://www.mkrealty.in/hero-desktop.png">
+    <meta property="og:url" content="https://www.mkrealty.in/properties.html">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- ═══ Twitter Card ═══ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vadodara Properties | MK Real Estate Listings">
+    <meta name="twitter:description" content="100+ properties for sale & rent in Vadodara. Browse houses, flats, plots & offices.">
+    <meta name="twitter:image" content="https://www.mkrealty.in/hero-desktop.png">
+
+    <!-- ═══ Geo ═══ -->
+    <meta name="geo.region" content="IN-GJ">
+    <meta name="geo.placename" content="Vadodara, Gujarat, India">
+    <meta name="geo.position" content="22.3072;73.1812">
+    <meta name="ICBM" content="22.3072, 73.1812">
+
+    <!-- ═══ Performance ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://uogczfyjsukpjmfprmvz.supabase.co">
+
+    <!-- ═══ Structured Data ═══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Properties for Sale and Rent in Vadodara",
+      "url": "https://www.mkrealty.in/properties.html",
+      "description": "Browse houses, apartments, plots & commercial properties for sale and rent across Vadodara with MK Real Estate.",
+      "provider": {
+        "@type": "RealEstateAgent",
+        "name": "MK Real Estate",
+        "telephone": "+919099761469",
+        "url": "https://www.mkrealty.in",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Vadodara",
+          "addressRegion": "Gujarat",
+          "addressCountry": "IN"
+        }
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="index.css">
+    
+    <style>
+        .page-header {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), var(--dark-bg)), url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            min-height: 400px;
+        }
+
+        /* WIZARD CONTAINER */
+        #wizard-container {
+            max-width: 600px;
+            margin: -100px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-wizard {
+            background: var(--dark-bg-elevated);
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-glow);
+        }
+
+        .wizard-step {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .wizard-step.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .wizard-label {
+            font-size: 20px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .wizard-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Property Cards Grid */
+        #results-container {
+            display: none; /* Hidden until wizard completes */
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        .property-card {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .property-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--glass-border);
+            transition: transform 0.5s ease;
+        }
+        .property-card:hover .property-img {
+            transform: scale(1.05);
+        }
+        .property-info {
+            padding: var(--space-md);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--dark-bg);
+            z-index: 2;
+        }
+        .property-title { font-size: 20px; margin-bottom: var(--space-xs); }
+        .property-price { font-size: 24px; font-weight: 700; color: var(--gold-primary); margin-bottom: var(--space-sm); }
+        .property-meta { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px; margin-bottom: auto; padding-bottom: var(--space-md);}
+        
+        .empty-state {
+            text-align: center;
+            padding: var(--space-xl) 0;
+            color: var(--text-muted);
+        }
+
+        /* Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            padding: 0;
+            border: none;
+            height: 24px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            cursor: pointer;
+            margin-top: -10px; 
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: var(--glass-border);
+            border-radius: 2px;
+        }
+
+        .filter-summary {
+            background: rgba(0,0,0,0.2);
+            padding: var(--space-sm);
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .filter-tag {
+            background: var(--dark-bg);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="glass-nav">
+        <div class="navbar">
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="logo-img" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNGFmMzciIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMzIgMTBsLTktOS05IDl2MTFoMThWMTB6Ii8+PHBhdGggZD0iTTkgMjJWMTEiLz48cGF0aCBkPSJNMjIgMjJWMTEiLz48L3N2Zz4='">
+                <span class="logo-text">MK REAL ESTATE</span>
+            </a>
+            
+            <button class="nav-mobile-btn">☰</button>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html" class="active">Properties</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li>
+                    <a href="https://www.instagram.com/mk_realty_vadodara/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header" id="dynamic-header">
+        <div class="container fade-in text-center">
+            <h1 class="text-gradient" id="header-title" style="font-size: clamp(32px, 5vw, 56px); margin-bottom: var(--space-sm);">Find Your Perfect Property</h1>
+            <p class="text-muted" id="header-subtitle" style="font-size: 18px;">Follow the steps to locate exactly what you're looking for.</p>
+        </div>
+    </div>
+
+    <!-- Wizard Interface -->
+    <div class="container" id="wizard-container">
+        <div class="filter-wizard fade-in">
+            
+            <!-- Step Tracker -->
+            <div style="display: flex; gap: 8px; margin-bottom: var(--space-md);">
+                <div style="height: 4px; flex:1; background: var(--gold-primary); border-radius: 2px;" id="track-1"></div>
+                <div style="height: 4px; flex:1; background: var(--glass-border); border-radius: 2px;" id="track-2"></div>
+                <div style="height: 4px; flex:1; background: var(--glass-border); border-radius: 2px;" id="track-3"></div>
+            </div>
+
+            <!-- Step 1: Area -->
+            <div class="wizard-step active" id="step-1">
+                <h3 class="wizard-label">1. Where are you looking?</h3>
+                <p class="text-muted mb-md">Select your preferred area in Vadodara.</p>
+                <select id="filter-area">
+                    <option value="All">All Vadodara Areas</option>
+                    <option value="Harni">Harni</option>
+                    <option value="Alkapuri">Alkapuri</option>
+                    <option value="Akota">Akota</option>
+                    <option value="Fatehgunj">Fatehgunj</option>
+                    <option value="Karelibaug">Karelibaug</option>
+                    <option value="Waghodia">Waghodia</option>
+                    <option value="Vasna">Vasna</option>
+                    <option value="Sama">Sama</option>
+                    <option value="Mandvi">Mandvi</option>
+                    <option value="Manjalpur">Manjalpur</option>
+                    <option value="Tandalja">Tandalja</option>
+                    <option value="Soma Talav">Soma Talav</option>
+                    <option value="Ajwa Road">Ajwa Road</option>
+                    <option value="Tarsali">Tarsali</option>
+                    <option value="Warasiya">Warasiya</option>
+                    <option value="Khodiyar nagar">Khodiyar nagar</option>
+                    <option value="Kalali">Kalali</option>
+                    <option value="Gotri">Gotri</option>
+                    <option value="Makarpura">Makarpura</option>
+                    <option value="Others">Others</option>
+                </select>
+                <div class="wizard-nav" style="justify-content: flex-end;">
+                    <button class="btn-primary" onclick="nextStep(2)">Next Step &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Type -->
+            <div class="wizard-step" id="step-2">
+                <h3 class="wizard-label">2. What property type?</h3>
+                <p class="text-muted mb-md">Select between residential, commercial, or land.</p>
+                <select id="filter-type">
+                    <option value="All">All Types</option>
+                    <option value="Sale: Houses & Apartments">For Sale: Houses & Apartments</option>
+                    <option value="Rent: Houses & Apartments">For Rent: Houses & Apartments</option>
+                    <option value="New Projects">New Projects & Properties</option>
+                    <option value="Lands & Plots">Lands & Plots</option>
+                    <option value="Rent: Shops & Offices">For Rent: Shops & Offices</option>
+                    <option value="Sale: Shops & Offices">For Sale: Shops & Offices</option>
+                    <option value="PG & Guest Houses">PG & Guest Houses</option>
+                </select>
+                <div class="wizard-nav">
+                    <button class="btn-outline" onclick="prevStep(1)">&larr; Back</button>
+                    <button class="btn-primary" onclick="nextStep(3)">Next Step &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Budget -->
+            <div class="wizard-step" id="step-3">
+                <h3 class="wizard-label">3. What is your budget?</h3>
+                <p class="text-muted mb-md">Set your maximum limit.</p>
+                <div class="mb-md">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-xs);">
+                        <span>0</span>
+                        <span id="budget-display" style="font-weight: 600; color: var(--text-main);">Any</span>
+                    </div>
+                    <input type="range" id="filter-budget" min="0" max="100000000" step="50000" value="100000000">
+                </div>
+                <div class="wizard-nav">
+                    <button class="btn-outline" onclick="prevStep(2)">&larr; Back</button>
+                    <button class="btn-primary" onclick="submitWizard()">Search Properties 🔍</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Properties Display (Results Mode) -->
+    <section class="container" id="results-container" style="padding-top: var(--space-xl);">
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+            <h2 class="text-gold">Search Results</h2>
+            <button class="btn-outline" onclick="resetWizard()" style="padding: 8px 16px; min-height: 40px; font-size: 14px;">Edit Search</button>
+        </div>
+
+        <div class="filter-summary" id="filter-summary-tags">
+            <!-- Summary tags injected here -->
+        </div>
+
+        <div id="loading-spinner" style="text-align: center; color: var(--gold-primary); font-size: 24px; padding: 40px; display: none;">
+            Loading properties...
+        </div>
+        
+        <div class="property-grid" id="properties-grid">
+            <!-- Properties injected here via JS -->
+        </div>
+        
+        <div id="no-results" class="empty-state" style="display: none;">
+            <div style="font-size: 48px; margin-bottom: 16px;">🏡</div>
+            <h3 class="text-gold">No Properties Found</h3>
+            <p>Try broadening your search criteria.</p>
+            <button class="btn-outline" style="margin-top: var(--space-md);" onclick="resetWizard()">Change Filters</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--dark-bg-elevated); padding: 80px 0 40px; border-top: 1px solid var(--glass-border); margin-top: auto;">
+        <!-- Standardized Footer Template -->
+        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <a href="index.html" class="logo-container" style="margin-bottom: 24px;">
+                    <span class="logo-text">MK REAL ESTATE</span>
+                </a>
+                <p class="text-muted">One Stop Solution To Your સપના નું ઘર in Vadodara.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 24px; color: var(--gold-primary);">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="properties.html" style="color: var(--text-muted); text-decoration: none;">All Properties</a></li>
+                    <li><a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a></li>
+                    <li><a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact Us</a></li>
+                    <li><a href="privacy-policy.html" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 24px; color: var(--gold-primary);">Contact</h4>
+                <p class="text-muted" style="margin-bottom: 8px;">Phone / WhatsApp:</p>
+                <a href="#" class="whatsapp-btn" style="color: white; font-size: 18px; text-decoration: none; font-weight: bold;">+91 9099761469</a>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/mk_realty_vadodara/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span style="font-size: 14px; margin-left:8px;">Follow on Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid var(--glass-border); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 14px;">
+            <p>&copy; <span id="year"></span> MK Real Estate. All Rights Reserved.</p>
+            <p style="margin-top: 8px;">Designed & Developed by <strong>Vanrajsinh Gohil (+91 9313045917)</strong></p>
+            <p style="margin-top: 8px;"><a href="admin.html" style="color: inherit; text-decoration: underline;">Admin Login</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+    <script src="properties.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

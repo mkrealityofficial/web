@@ -1,0 +1,10 @@
+Links 
+
+1.Instagram
+"https://www.instagram.com/mk_realty_vadodara/?utm_source=ig_web_button_share_sheet"
+
+2.supabase project URL
+"https://wktbqlvpvqssmidqzhgk.supabase.co"
+
+3.supabase anon keys
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndrdGJxbHZwdnFzc21pZHF6aGdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3MzAyMjAsImV4cCI6MjA5MTMwNjIyMH0.hTYa_jzPTtoEh07wRImULaHP92AIWVTmSaGwoW_VZYs"

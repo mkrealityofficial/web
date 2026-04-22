@@ -1,0 +1,267 @@
+/* admin.css - MK Real Estate Admin Dashboard */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --admin-bg: #070c18;
+  --admin-surface: #0d1526;
+  --admin-border: rgba(212, 175, 55, 0.15);
+  --admin-text: #e8eaf0;
+  --admin-muted: #7a8299;
+  --admin-primary: #0a0f1d;
+  --admin-gold: #d4af37;
+  --admin-gold-light: #f5d76e;
+  --admin-gold-dim: rgba(212, 175, 55, 0.12);
+  --radius: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+/* Dashboard Layout */
+#dashboard {
+  display: none; /* hidden until auth */
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  background: #06090f;
+  border-right: 1px solid var(--admin-border);
+  color: #fff;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  color: var(--admin-gold);
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.sidebar nav a {
+  color: var(--admin-muted);
+  text-decoration: none;
+  padding: 11px 14px;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: var(--admin-gold-dim);
+  color: var(--admin-gold);
+  border-color: var(--admin-border);
+}
+
+/* ── Main Content ── */
+.main-content {
+  padding: 36px;
+  overflow-y: auto;
+  background: var(--admin-bg);
+}
+
+.main-content h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* ── Forms ── */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--admin-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input:not([type="file"]):not([type="submit"]):not([type="checkbox"]),
+select,
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--admin-text);
+  transition: border-color 0.25s, background 0.25s;
+  outline: none;
+}
+
+input:not([type="file"]):not([type="submit"]):focus,
+select:focus,
+textarea:focus {
+  border-color: var(--admin-gold);
+  background: rgba(212,175,55,0.05);
+}
+
+select option {
+  background: #0d1526;
+}
+
+/* ── Buttons ── */
+button:not(.logoutButton) {
+  background: linear-gradient(135deg, var(--admin-gold), #c8a227);
+  color: #000;
+  border: none;
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+button:not(.logoutButton):hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+button.btn-outline {
+  background: transparent;
+  border: 1px solid var(--admin-border);
+  color: var(--admin-muted);
+  font-weight: 500;
+}
+
+button.btn-outline:hover {
+  border-color: var(--admin-gold);
+  color: var(--admin-gold);
+  background: var(--admin-gold-dim);
+  transform: none;
+  opacity: 1;
+}
+
+button.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+}
+
+/* ── Table ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+th {
+  color: var(--admin-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+tbody tr:hover td {
+  background: var(--admin-gold-dim);
+}
+
+td img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--admin-border);
+}
+
+/* ── Utils ── */
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.2); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.4); }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  #dashboard {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    padding: 16px;
+  }
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  .sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .sidebar nav a {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+  }
+  .main-content {
+    padding: 16px;
+  }
+  .card {
+    overflow-x: auto;
+    padding: 16px;
+  }
+  .flex-space {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  #view-add > div > h1 {
+     font-size: 20px;
+  }
+  #add-property-form > div {
+    grid-template-columns: 1fr !important;
+  }
+}

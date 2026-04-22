@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ═══ Primary SEO ═══ -->
+    <title>MK Real Estate Vadodara | Buy, Sell & Rent Property in Vadodara</title>
+    <meta name="description" content="MK Real Estate is Vadodara's #1 real estate consultancy. Buy, sell, or rent premium houses, apartments, plots & commercial properties in Alkapuri, Akota, Fatehgunj & more. Call +91 9099761469.">
+    <meta name="keywords" content="real estate vadodara, property for sale vadodara, property for rent vadodara, MK real estate, houses in vadodara, apartments vadodara, plots vadodara, commercial property vadodara, alkapuri property, akota property, fatehgunj property, buy house baroda, rent apartment baroda, MK realty vadodara">
+    <meta name="author" content="MK Real Estate, Vadodara">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#d4af37">
+    <link rel="canonical" href="https://www.mkrealty.in/index.html">
+
+    <!-- ═══ Open Graph (Facebook / WhatsApp) ═══ -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MK Real Estate Vadodara">
+    <meta property="og:title" content="MK Real Estate Vadodara | Buy, Sell & Rent Property">
+    <meta property="og:description" content="Vadodara's premium real estate consultancy. Discover houses, apartments, plots & offices across Vadodara. One Stop Solution To Your સપના નું ઘર.">
+    <meta property="og:image" content="https://www.mkrealty.in/hero-desktop.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://www.mkrealty.in/">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- ═══ Twitter Card ═══ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MK Real Estate Vadodara | Premium Properties">
+    <meta name="twitter:description" content="Buy, sell, or rent premium properties in Vadodara with MK Real Estate. Call +91 9099761469.">
+    <meta name="twitter:image" content="https://www.mkrealty.in/hero-desktop.png">
+
+    <!-- ═══ Geo / Local SEO ═══ -->
+    <meta name="geo.region" content="IN-GJ">
+    <meta name="geo.placename" content="Vadodara, Gujarat, India">
+    <meta name="geo.position" content="22.3072;73.1812">
+    <meta name="ICBM" content="22.3072, 73.1812">
+
+    <!-- ═══ Performance ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://uogczfyjsukpjmfprmvz.supabase.co">
+
+    <!-- ═══ Structured Data — LocalBusiness ═══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "MK Real Estate",
+      "alternateName": "MK Realty Vadodara",
+      "url": "https://www.mkrealty.in",
+      "logo": "https://www.mkrealty.in/logo.png",
+      "image": "https://www.mkrealty.in/hero-desktop.png",
+      "description": "MK Real Estate is Vadodara's premier real estate consultancy offering houses, apartments, plots and commercial properties for sale and rent.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vadodara",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "22.3072",
+        "longitude": "73.1812"
+      },
+      "telephone": "+919099761469",
+      "sameAs": [
+        "https://www.instagram.com/mk_realty_vadodara/"
+      ],
+      "areaServed": "Vadodara",
+      "priceRange": "₹₹–₹₹₹",
+      "openingHours": "Mo-Sa 09:00-20:00"
+    }
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
+    
+    <style>
+        /* ── Loading Screen ── */
+        #mk-loader {
+            position: fixed;
+            inset: 0;
+            background: #0a0f1d;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #mk-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-logo {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            animation: logoPulse 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 18px rgba(212,175,55,0.45));
+            border-radius: 12px;
+        }
+        .loader-bar-track {
+            width: 220px;
+            height: 3px;
+            background: rgba(212,175,55,0.15);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .loader-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #d4af37, #f5d76e);
+            border-radius: 999px;
+            animation: barFill 1.6s ease forwards;
+        }
+        .loader-tagline {
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: rgba(212,175,55,0.6);
+            text-transform: uppercase;
+        }
+        @keyframes logoPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        @keyframes barFill {
+            0%   { width: 0%; }
+            60%  { width: 75%; }
+            100% { width: 100%; }
+        }
+
+        /* ── Hero Section (no door) ── */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 100%), url('hero-desktop.png') center/cover;
+            z-index: 1;
+            transform: scale(1.05);
+            animation: heroZoom 6s ease forwards;
+        }
+        @keyframes heroZoom {
+            to { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%), url('hero-mobile.png') center/cover;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+            padding: 0 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroReveal 1s ease 0.4s forwards;
+        }
+        @keyframes heroReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-title {
+            font-size: clamp(40px, 6vw, 72px);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Category Cards */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .category-card {
+            padding: 40px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            transition: var(--transition);
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
+        }
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* Property Cards */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        .property-card {
+            overflow: hidden;
+        }
+        .property-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .property-info {
+            padding: 24px;
+        }
+        .property-title { font-size: 20px; margin-bottom: 8px; }
+        .property-price { font-size: 24px; font-weight: 700; color: var(--gold-primary); margin-bottom: 16px; }
+        .property-meta { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="mk-loader">
+        <img src="logo.png" alt="MK Real Estate" class="loader-logo">
+        <div class="loader-bar-track">
+            <div class="loader-bar-fill"></div>
+        </div>
+        <div class="loader-tagline">One Stop Solution · Vadodara</div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="glass-nav">
+        <div class="container navbar">
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="MK Real Estate Logo" class="logo-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNGFmMzciIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMzIgMTBsLTktOS05IDl2MTFoMThWMTB6Ii8+PHBhdGggZD0iTTkgMjJWMTEiLz48cGF0aCBkPSJNMjIgMjJWMTEiLz48L3N2Zz4='">
+                <span class="logo-text">MK REAL ESTATE</span>
+            </a>
+            
+            <button class="nav-mobile-btn">☰</button>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li>
+                    <a href="https://www.instagram.com/mk_realty_vadodara/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title text-gradient">Premium Living, Elevated.</h1>
+            <p class="hero-subtitle">One Stop Solution To Your સપના નું ઘર</p>
+            <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                <a href="properties.html" class="btn-primary">Explore Properties</a>
+                <a href="#" class="btn-outline whatsapp-btn">Contact on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="container fade-in">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 class="text-gold" style="margin-bottom: 8px;">Find What You Need</h2>
+            <p class="text-muted">Browse our extensive categories of premium properties</p>
+        </div>
+        
+        <div class="category-grid">
+            <a href="properties.html?type=sale" class="category-card glass">
+                <div class="category-icon">🏠</div>
+                <h3>Buy a Home</h3>
+                <p class="text-muted">Find your dream house or apartment in Vadodara's top areas.</p>
+            </a>
+            <a href="properties.html?type=rent" class="category-card glass">
+                <div class="category-icon">🔑</div>
+                <h3>Rent a Property</h3>
+                <p class="text-muted">Explore rental options fitting all lifestyle needs.</p>
+            </a>
+            <a href="properties.html?type=commercial" class="category-card glass">
+                <div class="category-icon">🏢</div>
+                <h3>Commercial Spaces</h3>
+                <p class="text-muted">Shops and offices for your growing business.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Properties (Mockup until Supabase loads) -->
+    <section class="container fade-in">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 16px;">
+            <div>
+                <h2 class="text-gold" style="margin-bottom: 8px;">Featured Listings</h2>
+                <p class="text-muted">Handpicked premium properties for you.</p>
+            </div>
+            <a href="properties.html" class="btn-outline" style="padding: 8px 16px;">View All</a>
+        </div>
+
+        <div class="property-grid" id="featured-grid">
+            <!-- Dynamic Injection / Fallback placeholders -->
+            <div class="property-card glass">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="House" class="property-img">
+                <div class="property-info">
+                    <h3 class="property-title">Luxury Villa in Alkapuri</h3>
+                    <div class="property-price">₹2.5 Cr</div>
+                    <div class="property-meta">
+                        <span>Sale: House</span>
+                        <span>Alkapuri</span>
+                    </div>
+                    <a href="#" class="btn-primary" style="width: 100%">View Details</a>
+                </div>
+            </div>
+             <div class="property-card glass">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80" alt="Apt" class="property-img">
+                <div class="property-info">
+                    <h3 class="property-title">Modern Apartment 3BHK</h3>
+                    <div class="property-price">₹15,000 / mo</div>
+                    <div class="property-meta">
+                        <span>Rent: Apartment</span>
+                        <span>Fatehgunj</span>
+                    </div>
+                    <a href="#" class="btn-primary" style="width: 100%">View Details</a>
+                </div>
+            </div>
+             <div class="property-card glass">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Office" class="property-img">
+                <div class="property-info">
+                    <h3 class="property-title">Premium Office Space</h3>
+                    <div class="property-price">₹1.2 Cr</div>
+                    <div class="property-meta">
+                        <span>Sale: Commercial</span>
+                        <span>Akota</span>
+                    </div>
+                    <a href="#" class="btn-primary" style="width: 100%">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="container fade-in">
+        <div class="glass" style="display: flex; flex-wrap: wrap; overflow: hidden;">
+            <div style="flex: 1; min-width: 300px;">
+                <img src="founder.png" alt="Uday Saraniya - Founder MK Real Estate" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="founder-content" style="flex: 1; padding: 48px; display: flex; flex-direction: column; justify-content: center; min-width: 280px;">
+                <h2 class="text-gold" style="margin-bottom: 16px;">Message from the Founder</h2>
+                <p style="margin-bottom: 24px; color: var(--text-muted);">
+                    "At MK Real Estate, our priority is trust and transparency. We believe in providing a seamless experience, whether you are looking for your absolute dream home or an investment that scales. Welcome to your one-stop solution."
+                </p>
+                <div style="margin-top: auto;">
+                    <strong>Uday Saraniya</strong><br>
+                    <span class="text-muted">Founder, MK Real Estate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--dark-bg-elevated); padding: 80px 0 40px; border-top: 1px solid var(--glass-border); margin-top: 40px;">
+        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <a href="index.html" class="logo-container" style="margin-bottom: 24px;">
+                    <span class="logo-text">MK REAL ESTATE</span>
+                </a>
+                <p class="text-muted">One Stop Solution To Your સપના નું ઘર in Vadodara.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 24px; color: var(--gold-primary);">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="properties.html" style="color: var(--text-muted); text-decoration: none;">All Properties</a></li>
+                    <li><a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a></li>
+                    <li><a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact Us</a></li>
+                    <li><a href="privacy-policy.html" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 24px; color: var(--gold-primary);">Contact</h4>
+                <p class="text-muted" style="margin-bottom: 8px;">Phone / WhatsApp:</p>
+                <a href="#" class="whatsapp-btn" style="color: white; font-size: 18px; text-decoration: none; font-weight: bold;">+91 9099761469</a>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/mk_realty_vadodara/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon" style="justify-content: flex-start;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span style="font-size: 14px; margin-left:8px;">Follow on Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid var(--glass-border); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 14px;">
+            <p>&copy; <span id="year"></span> MK Real Estate. All Rights Reserved.</p>
+            <p style="margin-top: 8px;">Designed &amp; Developed by <strong>Vanrajsinh Gohil (+91 9313045917)</strong></p>
+            <p style="margin-top: 8px;"><a href="admin.html" style="color: inherit; text-decoration: underline;">Admin Login</a></p>
+        </div>
+    </footer>
+
+    <!-- Exit Intent Modal -->
+    <div class="modal-overlay" id="exit-intent-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="exit-close">&times;</button>
+            <h2 class="text-gold" style="margin-bottom: 16px; text-align: center;">Wait! Before You Go...</h2>
+            <p class="text-muted" style="text-align: center; margin-bottom: 24px;">Don't miss out on premium deals. Leave your details and we will find the perfect property for you.</p>
+            
+            <form id="exit-form" style="display: flex; flex-direction: column; gap: 16px;">
+                <input type="text" id="exit-name" placeholder="Your Name" required>
+                <input type="tel" id="exit-phone" placeholder="Your Phone Number" required>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 8px;">Yes, Contact Me!</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // Hide loader after page loads
+        window.addEventListener('load', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            setTimeout(() => {
+                document.getElementById('mk-loader').classList.add('hidden');
+            }, 1700);
+            
+            // Supabase functionality integration
+            async function loadFeaturedProperties() {
+                if (window.supabaseClient) {
+                    try {
+                        const { data, error } = await supabaseClient
+                            .from('properties')
+                            .select('*')
+                            .limit(3);
+                            
+                        if (!error && data.length > 0) {
+                            const grid = document.getElementById('featured-grid');
+                            grid.innerHTML = '';
+                            data.forEach(prop => {
+                                const strPrice = prop.price ? prop.price.toString() : "";
+                                let formattedPrice = strPrice;
+                                if (!/[a-zA-Z\/]/.test(strPrice)) {
+                                    const pureNum = parseInt(strPrice.replace(/[^0-9]/g, '')) || 0;
+                                    formattedPrice = pureNum >= 100000 ? `₹${(pureNum/100000).toFixed(2)} Lacs` : `₹${pureNum}`;
+                                } else if (!formattedPrice.includes('₹')) {
+                                    formattedPrice = `₹${formattedPrice}`;
+                                }
+                                const imageSrc = (prop.images && prop.images.length > 0) ? prop.images[0] : 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=600';
+                                
+                                grid.innerHTML += `
+                                <div class="property-card glass">
+                                    <img src="${imageSrc}" alt="${prop.title}" class="property-img">
+                                    <div class="property-info">
+                                        <h3 class="property-title">${prop.title}</h3>
+                                        <div class="property-price">${formattedPrice}</div>
+                                        <div class="property-meta">
+                                            <span>${prop.type}</span>
+                                            <span>${prop.area}</span>
+                                        </div>
+                                        <a href="property-details.html?id=${prop.id}" class="btn-primary" style="width: 100%">View Details</a>
+                                    </div>
+                                </div>
+                                `;
+                            });
+                        }
+                    } catch (err) {
+                        console.error('Error loading featured properties', err);
+                    }
+                }
+            }
+            
+            if (window.supabaseClient) {
+                loadFeaturedProperties();
+            } else {
+                let triggered = false;
+                const fallbackTimer = setTimeout(() => {
+                    if(!triggered) { triggered = true; loadFeaturedProperties(); }
+                }, 800);
+                window.addEventListener('supabase_ready', () => {
+                    if(!triggered) { triggered = true; clearTimeout(fallbackTimer); loadFeaturedProperties(); }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

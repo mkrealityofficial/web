@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ═══ Primary SEO ═══ -->
+    <title>Property Details | MK Real Estate Vadodara</title>
+    <meta name="description" content="View full details, photos & price of this property listed by MK Real Estate Vadodara. Contact us on WhatsApp +91 9099761469 to schedule a site visit today.">
+    <meta name="keywords" content="property details vadodara, buy property vadodara, rent property vadodara, MK real estate listing, house for sale vadodara, apartment for rent baroda, property inquiry vadodara">
+    <meta name="author" content="MK Real Estate, Vadodara">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="theme-color" content="#d4af37">
+    <link rel="canonical" href="https://www.mkrealty.in/property-details.html">
+
+    <!-- ═══ Open Graph ═══ -->
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="MK Real Estate Vadodara">
+    <meta property="og:title" content="Property Details | MK Real Estate Vadodara">
+    <meta property="og:description" content="Explore property details, gallery & pricing listed by MK Real Estate. WhatsApp +91 9099761469 for site visits.">
+    <meta property="og:image" content="https://www.mkrealty.in/hero-desktop.png">
+    <meta property="og:url" content="https://www.mkrealty.in/property-details.html">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- ═══ Twitter Card ═══ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Property Details | MK Real Estate Vadodara">
+    <meta name="twitter:description" content="View property photos, price & details. Contact MK Real Estate on WhatsApp +91 9099761469.">
+    <meta name="twitter:image" content="https://www.mkrealty.in/hero-desktop.png">
+
+    <!-- ═══ Geo ═══ -->
+    <meta name="geo.region" content="IN-GJ">
+    <meta name="geo.placename" content="Vadodara, Gujarat, India">
+
+    <!-- ═══ Performance ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://uogczfyjsukpjmfprmvz.supabase.co">
+
+    <!-- ═══ Structured Data ═══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemPage",
+      "name": "Property Listing — MK Real Estate Vadodara",
+      "url": "https://www.mkrealty.in/property-details.html",
+      "description": "Detailed property listing from MK Real Estate Vadodara.",
+      "provider": {
+        "@type": "RealEstateAgent",
+        "name": "MK Real Estate",
+        "telephone": "+919099761469",
+        "url": "https://www.mkrealty.in"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        .details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            padding: 140px var(--space-md) 80px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 992px) {
+            .details-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Gallery */
+        .gallery-main {
+            width: 100%;
+            height: 500px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 16px;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .gallery-thumbs::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .gallery-thumbs::-webkit-scrollbar-thumb {
+            background: var(--gold-primary);
+            border-radius: 4px;
+        }
+
+        .gallery-thumbs img {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+
+        .gallery-thumbs img:hover,
+        .gallery-thumbs img.active {
+            border-color: var(--gold-primary);
+            opacity: 1;
+        }
+
+        /* Info Section */
+        .property-header {
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 24px;
+        }
+
+        .detail-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 16px;
+        }
+
+        .attributes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 32px 0;
+            background: var(--dark-bg-elevated);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--glass-border);
+        }
+
+        .attribute-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .attribute-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .attribute-value {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .description-box {
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Inquiry Form */
+        .inquiry-card {
+            padding: 32px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="glass-nav">
+        <!-- Consistent header -->
+        <div class="navbar">
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="logo-img" loading="lazy"
+                    onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNGFmMzciIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMzIgMTBsLTktOS05IDl2MTFoMThWMTB6Ii8+PHBhdGggZD0iTTkgMjJWMTEiLz48cGF0aCBkPSJNMjIgMjJWMTEiLz48L3N2Zz4='">
+                <span class="logo-text">MK REAL ESTATE</span>
+            </a>
+            <button class="nav-mobile-btn">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li>
+                    <a href="https://www.instagram.com/mk_realty_vadodara/?utm_source=ig_web_button_share_sheet"
+                        target="_blank" class="social-icon" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="details-container fade-in" id="property-container" style="display:none;">
+
+        <!-- Left: Image Gallery -->
+        <div class="gallery-section">
+            <div class="gallery-main">
+                <img src="" alt="Property Primary Image" id="main-image">
+            </div>
+            <div class="gallery-thumbs" id="gallery-thumbs">
+                <!-- Thumbs injected via JS -->
+            </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="info-section">
+            <div class="property-header">
+                <div>
+                    <span class="detail-badge" id="prop-type">Loading Type...</span>
+                    <span class="detail-badge" id="prop-category"
+                        style="background: rgba(255,255,255,0.1); color: #fff; display: none;">Featured</span>
+                </div>
+                <h1 id="prop-title" style="font-size: 40px; margin-bottom: 16px;">Loading Property...</h1>
+                <div class="text-gold" id="prop-price" style="font-size: 32px; font-weight: 700;">₹ --</div>
+            </div>
+
+            <div class="attributes-grid">
+                <div class="attribute-item">
+                    <span class="attribute-label">Location / Area</span>
+                    <span class="attribute-value" id="prop-area">--</span>
+                </div>
+                <div class="attribute-item">
+                    <span class="attribute-label">Added On</span>
+                    <span class="attribute-value" id="prop-date">--</span>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 16px;">Description</h3>
+            <div class="description-box" id="prop-desc">
+                Loading description...
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-bottom: 32px;">
+                <button class="btn-primary whatsapp-btn" id="prop-wa-btn"
+                    style="flex: 1; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    Contact on WhatsApp
+                </button>
+            </div>
+
+            <!-- Inline Inquiry Form -> Redirects to WA now -->
+            <div class="glass inquiry-card">
+                <h3 style="margin-bottom: 8px;">Interested? Request Details</h3>
+                <p class="text-muted" style="margin-bottom: 24px; font-size: 14px;">Fill this form and we will connect
+                    with you via WhatsApp.</p>
+                <form id="inquiry-form" style="display:flex; flex-direction:column; gap:16px;">
+                    <input type="text" id="inq-name" placeholder="Full Name" required>
+                    <input type="tel" id="inq-phone" placeholder="Phone Number" required>
+                    <textarea id="inq-message" placeholder="I am interested in this property..." rows="3"></textarea>
+                    <button type="submit" class="btn-outline"
+                        style="width: 100%; border-color: var(--text-main); color: var(--text-main);">Send
+                        Request</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="error-container" style="display:none; text-align:center; padding: 160px 24px;">
+        <h1 class="text-gold">Property Not Found</h1>
+        <p class="text-muted" style="margin: 16px 0 32px;">The property you are looking for does not exist or has been
+            removed.</p>
+        <a href="properties.html" class="btn-primary">Browse Properties</a>
+    </div>
+
+    <!-- Exit Intent Modal -->
+    <div class="modal-overlay" id="exit-intent-overlay">
+        <!-- Reused -->
+        <div class="modal-content">
+            <button class="modal-close" id="exit-close">&times;</button>
+            <h2 class="text-gold" style="margin-bottom: 16px; text-align: center;">Wait! Before You Go...</h2>
+            <p class="text-muted" style="text-align: center; margin-bottom: 24px;">Don't miss out on premium deals.
+                Leave your details and we will find the perfect property for you.</p>
+            <form id="exit-form" style="display: flex; flex-direction: column; gap: 16px;">
+                <input type="text" id="exit-name" placeholder="Your Name" required>
+                <input type="tel" id="exit-phone" placeholder="Your Phone Number" required>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 8px;">Yes, Contact
+                    Me!</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Standardized Footer -->
+    <footer
+        style="background: var(--dark-bg-elevated); padding: 80px 0 40px; border-top: 1px solid var(--glass-border); margin-top: auto;">
+        <div class="container"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <a href="index.html" class="logo-container" style="margin-bottom: 24px;">
+                    <span class="logo-text">MK REAL ESTATE</span>
+                </a>
+                <p class="text-muted">One Stop Solution To Your સપના નું ઘર in Vadodara.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 24px; color: var(--gold-primary);">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="properties.html" style="color: var(--text-muted); text-decoration: none;">All
+                            Properties</a></li>
+                    <li><a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a></li>
+                    <li><a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact Us</a>
+                    </li>
+                    <li><a href="privacy-policy.html" style="color: var(--text-muted); text-decoration: none;">Privacy
+                            Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 24px; color: var(--gold-primary);">Contact</h4>
+                <p class="text-muted" style="margin-bottom: 8px;">Phone / WhatsApp:</p>
+                <a href="#" class="whatsapp-btn"
+                    style="color: white; font-size: 18px; text-decoration: none; font-weight: bold;">+91 9099761469</a>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/mk_realty_vadodara/?utm_source=ig_web_button_share_sheet"
+                        target="_blank" class="social-icon" style="justify-content: flex-start;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span style="font-size: 14px; margin-left:8px;">Follow on Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container"
+            style="border-top: 1px solid var(--glass-border); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 14px;">
+            <p>&copy; <span id="year"></span> MK Real Estate. All Rights Reserved.</p>
+            <p style="margin-top: 8px;">Designed & Developed by <strong>Vanrajsinh Gohil (+91 9313045917)</strong></p>
+            <p style="margin-top: 8px;"><a href="admin.html" style="color: inherit; text-decoration: underline;">Admin
+                    Login</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+    <script src="property-details.js"></script>
+</body>
+
+</html>
